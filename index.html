@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: hidden;
+                pointer-events: none;
+            }
+
+            .stretch {
+             width: 100%;
+            height: 100%;
+            }
+
+            #poison {
+                position:absolute;
+                height:10%;
+                top:50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+            }
+
+            #tiger {
+                position:absolute;
+                height:25%;
+                top:30%;
+                left:20%;
+                transform: translate(-50%, -50%);
+                animation: orbit 4s forwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #nopal {
+                position:absolute;
+                height:25%;
+                top:30%;
+                left:70%;
+                animation: orbit 3s forwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #kitten {
+                position:absolute;
+                height:25%;
+                top:10%;
+                left:50%;
+                transform: translateX(-50%);
+                animation: orbit 2s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #ice {
+                position:absolute;
+                height:25%;
+                top:65%;
+                left:30%;
+                animation: orbit 2s backwards infinite;
+                animation-timing-function: linear; 
+            }
+
+            img:hover {
+                background-color: greenyellow;
+                background-color: #fff;
+                box-shadow:
+                0 0 60px 30px #fff,  /* inner white */
+                0 0 100px 60px #f0f, /* middle magenta */
+                0 0 140px 90px #0ff; /* outer cyan */
+            }
+
+            #flower {
+                position:absolute;
+                height:25%;
+                top:65%;
+                left:60%;
+                animation: orbit 1s forwards infinite;
+                animation-timing-function: linear;  
+            }
+
+                @-webkit-keyframes orbit {
+                from {  -webkit-transform: rotate(0deg) translateX(20px) rotate(0deg); }
+                to   {  -webkit-transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+            }
+           
+            
+        </style>
+    </head>
+    <body>
+        <img src="prevflowerBG1.jpg" id="bg">
+        <img src="pickyourpoison.png" id="poison">
+        <img src="tiger.png" id="tiger">
+        <img src="nopal.png" id="nopal">
+        <img src="kitten.png" id="kitten">
+        <img src="iceCream.png" id="ice">
+        <a href="wish.html"><img src="flower.png" id="flower"></a>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: hidden;
+                pointer-events: none;
+                animation: fadeIn 3s 1;
+            }
+
+            .stretch {
+             width: 100%;
+            height: 100%;
+            }
+            #T1{
+                position: absolute;
+                top: 15%;
+                left:19%;
+                height:8%;
+                z-index:99;
+                transition: all 0.3s ease;
+                animation: fadeIn 9s 1;
+            }
+
+            #T1:hover {
+                background-color: #f9d5fe;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+            }
+
+            #T2{
+                position: absolute;
+                top: 80%;
+                left:50%;
+                height:8%;
+                z-index:99;
+                transition: all 0.3s ease;
+                animation: fadeIn 10s 1;
+            }
+
+            #T2:hover {
+                background-color: #f9d5fe;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+            }
+
+            #baby{
+                position:absolute;
+                top:20%;
+                height:70%;
+                left:25%;
+                animation: fadeIn 7s 1;
+            }
+
+            @keyframes fadeIn {
+                0% {opacity: 0;}
+                100% {opacity: 1;}
+            }
+
+            #redOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 8s ease;
+            }
+
+            #redOverlay.active {
+             opacity: 1;
+             pointer-events: auto;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <img src="makeawish.png" id="T1">
+        <img src="sheswakingup.png" id="T2">
+        <img src="ending.jpg" id="bg">
+        <img src="babyEND.png" id="baby">
+        <div id="redOverlay"></div>
+        
+        <script>
+            document.getElementById('T2').addEventListener('click', function() {
+                document.getElementById('redOverlay').classList.add('active');
+            });
+        </script>
+        
+    </body>
+</html>

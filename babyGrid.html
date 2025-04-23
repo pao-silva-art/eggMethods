@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        body {
+            background-image: url('mukbang.gif');
+            background-size: auto;
+            transition: background-size 0.5s ease;
+        }
+
+        #Button {
+            position: absolute;
+            top: 75%;
+            left: 70%;
+            height: 12%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #Button:hover {
+            background-color: #f9d5fe;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+        }
+    </style>
+    <title>Beauty Filter Toggle</title>
+</head>
+<body>
+    <img src="BeautyButtonOn.png" id="Button" onclick="beautyFilter()"/>
+
+    <script>
+        const backgrounds = ["mukbang.gif", "gifit_1745344352262.gif"];
+        let current = 0;
+        let clickCount = 0;
+
+        const sizes = [
+            "cover",
+            "contain",
+            "auto",
+            "100% 100%",
+            "50% 50%",
+            "75% 75%",
+            "100% auto",
+            "auto 100%",
+            "200% 200%"
+        ];
+
+        function beautyFilter() {
+            clickCount++;
+
+            // Redirect after 24 clicks
+            if (clickCount >= 24) {
+                window.location.href = "babySays.html";
+                return;
+            }
+
+            // Toggle background image
+            current = 1 - current;
+            document.body.style.backgroundImage = `url('${backgrounds[current]}')`;
+
+            // Random background size
+            const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+            document.body.style.backgroundSize = randomSize;
+        }
+    </script>
+</body>
+</html>

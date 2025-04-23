@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+           body {
+            overflow: hidden;
+           }
+           #bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            .stretch {
+             width: 100%;
+            height: 100%;
+            }
+            
+            #Button {
+                position: absolute;
+                top:75%;
+                left:70%;
+                height:12%;
+                z-index: 8;
+            }
+
+            #Button:hover {
+                background-color: #f9d5fe;
+                box-shadow:
+                0 0 60px 30px #fff,  /* inner white */
+                0 0 100px 60px #f0f, /* middle magenta */
+                0 0 140px 90px #0ff; /* outer cyan */
+            }
+
+            #pornA {
+                position: absolute;
+                top:15%;
+                left:20%;
+                height: 70%;
+                animation: orbit 2s backwards infinite;
+                animation-timing-function: linear;
+            }
+
+            #pornB {
+                position: absolute;
+                top:15%;
+                left:50%;
+                height: 70%;
+                animation: orbit 3s forwards infinite;
+                animation-timing-function: linear;
+            }
+            #pornB2 {
+                position: absolute;
+                top:16%;
+                left:56%;
+                height: 70%;
+                animation: orbit 3s forwards infinite;
+                animation-timing-function: linear;
+            }
+
+            @-webkit-keyframes orbit {
+                from {  -webkit-transform: rotate(0deg) translateX(220px) rotate(0deg); }
+                to   {  -webkit-transform: rotate(360deg) translateX(220px) rotate(-360deg); }
+            }
+
+            #door {
+                position: absolute;
+                height:20%;
+                top: 10%;
+                left: 10%;
+                z-index: 3;
+                display: none;
+                background-color: #f9d5fe;
+                box-shadow:
+                0 0 60px 30px #fff,  /* inner white */
+                0 0 100px 60px #f0f, /* middle magenta */
+                0 0 140px 90px #0ff; /* outer cyan */
+            }
+
+           
+
+        </style>
+    </head>
+    <body>
+        <a href="indexFb.html"><img src="door.png" id="door"></a>
+        <img src="pornA.png" id="pornA">
+        <img src="pornB.png" id="pornB">
+        <img src="BeautyButtonOn.png" id="Button">
+        <img src="test1Bg.png" id="bg">
+        <script>
+
+        let babyMode = false;
+
+window.onload = function() {
+    // Start 3 seconds after page load
+    setTimeout(() => {
+        setInterval(() => {
+            const baseId = Math.random() < 0.5 ? 'pornA' : 'pornB';
+            const original = document.getElementById(baseId);
+            if (!original) return;
+
+            const clone = original.cloneNode(true);
+            clone.id = baseId + '-clone-' + Date.now();
+
+            const randomTop = Math.random() * 80 + '%';
+            const randomLeft = Math.random() * 80 + '%';
+
+            clone.style.top = randomTop;
+            clone.style.left = randomLeft;
+            clone.style.position = 'absolute';
+            clone.style.animation = original.style.animation || window.getComputedStyle(original).animation;
+
+            // Apply correct image based on mode
+            if (babyMode) {
+                if (baseId === 'pornA') clone.src = 'babyA.png';
+                if (baseId === 'pornB') clone.src = 'babyB.png';
+            } else {
+                if (baseId === 'pornA') clone.src = 'pornA.png';
+                if (baseId === 'pornB') clone.src = 'pornB.png';
+            }
+
+            document.body.appendChild(clone);
+        }, 1000);
+    }, 500);
+
+    // Toggle baby mode and update images
+    document.getElementById("Button").onclick = function() {
+        babyMode = !babyMode;
+
+        // Update existing pornA/pornB images
+        const allPornA = document.querySelectorAll('img[id^="pornA"]');
+        const allPornB = document.querySelectorAll('img[id^="pornB"]');
+
+        allPornA.forEach(img => {
+            img.src = babyMode ? 'babyA.png' : 'pornA.png';
+        });
+
+        allPornB.forEach(img => {
+            img.src = babyMode ? 'babyB.png' : 'pornB.png';
+        });
+
+        // Show or hide the door
+        const door = document.getElementById("door");
+        if (door) {
+            door.style.display = babyMode ? "block" : "none";
+        }
+    };
+};
+</script>
+
+            
+    </body>
+    
+</html>

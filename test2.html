@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #bg {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #Button {
+            position: fixed;
+            top: 75%;
+            left: 70%;
+            height: 12%;
+            z-index: 8;
+        }
+
+        #cow {
+            position: absolute;
+            top: 25%;
+            left: 30%;
+            display: none;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+            animation: orbit 3s linear infinite;
+        }
+
+        .cow-orbit {
+            position: absolute;
+            animation: orbit 3s linear infinite;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+        }
+
+        @keyframes orbit {
+            from {
+                transform: rotate(0deg) translateX(220px) rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg) translateX(220px) rotate(-360deg);
+            }
+        }
+
+        #Button:hover {
+            background-color: #f9d5fe;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+        }
+    </style>
+</head>
+<body>
+    <img src="test2scroll.png" id="bg">
+    <a href="babyGrid.html"><img src="BeautyButtonOn.png" id="Button"></a>
+    <img src="cow.gif" id="cow">
+
+    <script>
+        window.onload = () => {
+            const templateCow = document.getElementById('cow');
+            let cows = [];
+
+            function cloneCow(cow) {
+                const clone = cow.cloneNode(true);
+                clone.id = '';
+                clone.style.display = 'block';
+                clone.classList.add('cow-orbit');
+
+                // Keep same size
+                clone.style.width = templateCow.width + 'px';
+                clone.style.height = templateCow.height + 'px';
+
+                // Random position
+                const maxX = window.innerWidth - templateCow.width;
+                const maxY = window.innerHeight - templateCow.height;
+                clone.style.left = `${Math.random() * maxX}px`;
+                clone.style.top = `${Math.random() * maxY}px`;
+
+                document.body.appendChild(clone);
+                return clone;
+            }
+
+            // Start with 1 cow
+            const firstCow = cloneCow(templateCow);
+            cows.push(firstCow);
+
+            // Exponential multiplication every 0.5 seconds
+            setInterval(() => {
+                const newCows = cows.map(cloneCow);
+                cows = cows.concat(newCows); // Double the herd
+            }, 500);
+        };
+    </script>
+</body>
+</html>

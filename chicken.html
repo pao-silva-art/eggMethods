@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #bg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: hidden;
+                pointer-events: none;
+            }
+
+            .stretch {
+             width: 100%;
+            height: 100%;
+            }
+
+          
+
+                @-webkit-keyframes orbit {
+                from {  -webkit-transform: rotate(0deg) translateX(20px) rotate(0deg); }
+                to   {  -webkit-transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+            }
+           
+            #T1{
+                position: absolute;
+                top: 20%;
+                left:19%;
+                height:12%;
+                transition: all 0.3s ease;
+                animation: slide 2s 1;
+            }
+
+            #T1:hover {
+                background-color: #f9d5fe;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+            }
+
+            #T2{
+                position: absolute;
+                top: 80%;
+                left:50%;
+                height:12%;
+                transition: all 0.3s ease;
+                animation: slide2 2s 1;
+            }
+
+            #T2:hover {
+                background-color: #f9d5fe;
+            box-shadow:
+                0 0 60px 30px #fff,
+                0 0 100px 60px #f0f,
+                0 0 140px 90px #0ff;
+            }
+
+            @keyframes slide {
+                0% {left:15%;}
+                100%{left:19%;}
+            }
+
+            @keyframes slide2 {
+                0% {left:59%;}
+                100%{left:50%;}
+            }
+
+            #ADr {
+                position: absolute;
+                top:7%;
+                left:5%;
+                height:90%;
+            }
+            #ADl {
+                position: absolute;
+                top:7%;
+                right:5%;
+                height:90%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <img src="chicken.png" id="bg">
+        <img src="youleftmebehind.png" id="T1">
+        <a href="ending.html"><img src="butistillrememberyou.png" id="T2"></a>
+        <img src="bannerLEFT.gif" id="ADr">
+        <img src="bannerRIGHT.gif" id="ADl">
+    </body>
+</html>
